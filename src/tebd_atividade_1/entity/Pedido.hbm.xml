@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15/08/2017 17:13:14 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="tebd_atividade_1.entity.Pedido" table="pedido" catalog="tebd" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="descricao" type="string">
+            <column name="descricao" length="30" not-null="true" />
+        </property>
+        <set name="items" table="item" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pedido_id" not-null="true" />
+            </key>
+            <one-to-many class="tebd_atividade_1.entity.Item" />
+        </set>
+    </class>
+</hibernate-mapping>
